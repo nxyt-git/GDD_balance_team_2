@@ -30,9 +30,11 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) moveInput.x = -1f;
         if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) moveInput.x = 1f;
 
-        Vector3 movement = new Vector3(moveInput.x, 0.0f, moveInput.y).normalized;
+        Vector3 localMovement = new Vector3(moveInput.x, 0.0f, moveInput.y).normalized;
 
-        rb.AddForce(movement * acceleration, ForceMode.Acceleration);
+        Vector3 worldMovement = transform.TransformDirection(localMovement);
+
+        rb.AddForce(worldMovement * acceleration, ForceMode.Acceleration);
 
         if (rb.linearVelocity.magnitude > maxSpeed)
         {
