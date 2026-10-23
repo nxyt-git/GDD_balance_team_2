@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [Tooltip("Siła, z jaką kula przyspiesza.")]
+    [Tooltip("Siła z jaką kula przyspiesza.")]
     public float acceleration = 25.0f;
 
     [Tooltip("Maksymalna prędkość kuli.")]
