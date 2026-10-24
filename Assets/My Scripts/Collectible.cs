@@ -19,9 +19,12 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Add points to the player's score
-            // Destroy the collectible object
-            Destroy(gameObject);
+
+            if (other.TryGetComponent<PlayerLevelProgress>(out var playerLevelProgress))
+            {
+                playerLevelProgress.AddScore();
+                Destroy(gameObject);
+            }
         }
     }
 }
