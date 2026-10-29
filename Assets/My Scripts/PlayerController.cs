@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Maksymalna prędkość kuli.")]
     public float MaxSpeed => playerProgress.EnergyLevel == playerProgress.MaxEnergyLevel ? 25f : 10f;
     
-    
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
