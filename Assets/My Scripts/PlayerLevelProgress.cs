@@ -13,7 +13,7 @@ public class PlayerLevelProgress : MonoBehaviour
     public event Action OnRequiredScrewCollected;
     public int CollectedScrew => collectedScrew;
 
-    
+ 
     public void AddScore()
     {
         if (energyLevel == MaxEnergy)
@@ -37,6 +37,9 @@ public class PlayerLevelProgress : MonoBehaviour
     [SerializeField] private const int MaxEnergy = 100;
 
     public int EnergyLevel => energyLevel;
+    public int MaxEnergyLevel => MaxEnergy;
+    
+
     
     public void LoadEnergy()
     {

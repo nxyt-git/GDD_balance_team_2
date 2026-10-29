@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,15 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     [Tooltip("Siła z jaką kula przyspiesza.")]
     public float acceleration = 25.0f;
+    private Rigidbody rb;
+    private PlayerLevelProgress playerProgress;
 
     [Tooltip("Maksymalna prędkość kuli.")]
-    public float maxSpeed = 10.0f;
-
-    private Rigidbody rb;
-
+    public float MaxSpeed => playerProgress.EnergyLevel == playerProgress.MaxEnergyLevel ? 25f : 10f;
+    
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerProgress = GetComponent<PlayerLevelProgress>();
+
         rb.linearDamping = 2.5f;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
@@ -36,9 +40,9 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(worldMovement * acceleration, ForceMode.Acceleration);
 
-        if (rb.linearVelocity.magnitude > maxSpeed)
+        if (rb.linearVelocity.magnitude > MaxSpeed)
         {
-            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
+            rb.linearVelocity = rb.linearVelocity.normalized * MaxSpeed;
         }
     }
 }
