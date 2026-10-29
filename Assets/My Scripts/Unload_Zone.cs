@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class Unload_Zone : MonoBehaviour
@@ -13,4 +15,20 @@ public class Unload_Zone : MonoBehaviour
     {
         
     }
+
+    private PlayerLevelProgress playerProgress;
+    public bool LevelCompleted = false;
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+
+            if (other.TryGetComponent<PlayerLevelProgress>(out var playerLevelProgress) && playerLevelProgress.CollectedScrew >= playerLevelProgress.Requider_Screw)
+            {
+                LevelCompleted = true;
+                Debug.Log("Poziom ukonczono");
+            }
+        }
+    }
+
 }

@@ -12,6 +12,7 @@ public class PlayerLevelProgress : MonoBehaviour
 
     public event Action OnRequiredScrewCollected;
     public int CollectedScrew => collectedScrew;
+    public int Requider_Screw = REQUIRED_SCREW;
 
  
     public void AddScore()
@@ -38,7 +39,6 @@ public class PlayerLevelProgress : MonoBehaviour
 
     public int EnergyLevel => energyLevel;
     public int MaxEnergyLevel => MaxEnergy;
-    
 
     
     public void LoadEnergy()
